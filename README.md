@@ -18,6 +18,18 @@ Projeto beeem simples para aprender React Native 🐱‍🏍
 
 
 
-<h2>Para rodar o projeto</h2>
-<p>- git clone https://github.com/femelo22/Imc-Calculator-React.git</p>
-<p>- expo start</p>
+<h2>Rodando o projeto localmente</h2>
+
+<p>Faça um clone do repositório do projeto:</p>
+<p><b>- git clone https://github.com/femelo22/Imc-Calculator-React.git</b></p>
+
+<p>Entre na pasta do seu projeto e digite:</p>
+<p><b>- expo start</b></p>
+
+<p> Você será direcionado para um página do expo, lá clique em <i>Run in web browser</i> 😁</p>
+<p>
+  <img  width="20%" src="https://github.com/femelo22/Imc-Calculator-React/blob/master/assets/expoPage.png" />
+</p>
+
+
+
