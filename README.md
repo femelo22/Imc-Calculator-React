@@ -15,3 +15,9 @@ Projeto beeem simples para aprender React Native 🐱‍🏍
 <p>
   <img  width="20%" src="https://github.com/femelo22/Imc-Calculator-React/blob/master/assets/calculoImc.png" />
 </p>
+
+
+
+<h2>Para rodar o projeto</h2>
+- git clone https://github.com/femelo22/Imc-Calculator-React.git
+- expo start 
