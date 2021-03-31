@@ -14,7 +14,7 @@ export default class App extends Component<Props>{
 
   constructor(props){
     super(props);
-    this.state = {altura: 0, massa:0, resultado:0, resultadoText:""}
+    this.state = {altura: 0, massa:0, resultado:0, resultadoText:"Resultado"}
     this.calcular = this.calcular.bind(this)
   }
 
