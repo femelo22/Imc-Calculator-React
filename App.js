@@ -36,23 +36,21 @@ export default class App extends React.Component {
 
       let descricao = null;
 
-      if(imc < 16){
+      if(imc < 16) {
         descricao = "Magreza Grave";
-      }
-      else if(imc < 17)
+      }else if(imc < 17) {
         descricao = "Magreza Moderada";
-      else if(imc < 18.5)
+      }else if(imc < 18.5) {
         descricao = "Magreza Leve";
-      else if(imc < 25)
+      }else if(imc < 25) {
         descricao = "Saudável";
-      else if(imc < 30)
+      }else if(imc < 30) {
         descricao = "Sobrepeso";
-      else if(imc < 35)
+      }else if(imc < 35) {
         descricao = "Obesidade Grau I";
-      else if(imc < 40){
+      }else if(imc < 40) {
         descricao = "Obesidade Grau II";
-      }
-      else{
+      }else{
         descricao = "Obesidade Grau III";
       }
 
