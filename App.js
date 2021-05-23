@@ -9,104 +9,119 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-type Props = {};
-export default class App extends Component<Props>{
-
+export default class App extends React.Component {
   constructor(props){
-    super(props);
-    this.state = {altura: 0, massa:0, resultado:0, resultadoText:"Resultado"}
-    this.calcular = this.calcular.bind(this)
-  }
+    super(props)
 
-  
-  calcular() {
-
-
-    let imc = this.state.massa / (this.state.altura * this.state.altura)
-
-    let s = this.state;
-    s.resultado = imc;
-
-    if(this.state.massa != "" && this.state.altura != ""){
-      if(s.resultado < 16){
-        s.resultadoText = "Magreza Grave"
-      }else if(s.resultado < 17){
-        s.resultadoText = "Magreza Moderada"
-      }else if(s.resultado < 18.5){
-        s.resultadoText = "Magreza Leve"
-      }else if(s.resultado < 25){
-        s.resultadoText = "Saudável"
-      }else if(s.resultado < 30){
-        s.resultadoText = "Sobrepeso"
-      }else if(s.resultado < 35){
-        s.resultadoText = "Obesidade Grau I"
-      }else if(s.resultado < 40){
-        s.resultadoText = "Obesidade Grau II (severa)"
-      }else{
-        s.resultadoText = "Obesidade Grau III (mórbida)"
-      }
-      this.setState(s);
-
-    }else{
-      alert('Preencha os campos')
+    this.state = {
+      massa: null,
+      altura: null,
+      resultado: null,
+      descricao: null,
     }
-    
   }
 
-  render(){
+  calcular = () => {
+
+    if(this.state.massa == null || this.state.altura == null){
+      this.setState({
+        descricao: "Digite um valor válido",
+      })
+    }
+    else{
+      let imc = this.state.massa / Math.pow(this.state.altura, 2);
+
+      console.log("Imc: "  + imc);
+      console.log(this.state.massa / Math.pow(this.state.altura, 2));
+
+      let descricao = null;
+
+      if(imc < 16){
+        descricao = "Magreza Grave";
+      }
+      else if(imc < 17)
+        descricao = "Magreza Moderada";
+      else if(imc < 18.5)
+        descricao = "Magreza Leve";
+      else if(imc < 25)
+        descricao = "Saudável";
+      else if(imc < 30)
+        descricao = "Sobrepeso";
+      else if(imc < 35)
+        descricao = "Obesidade Grau I";
+      else if(imc < 40){
+        descricao = "Obesidade Grau II";
+      }
+      else{
+        descricao = "Obesidade Grau III";
+      }
+
+      this.setState({
+        resultado: imc.toFixed(2),
+        descricao,
+      })
+    }
+  }
+
+  alterarMassa = (e) => {
+    this.setState({
+      massa: e
+    })
+  }
+
+  alterarAltura = (e) => {
+    this.setState({
+      altura: e
+    })
+  }
+
+  render() {
     return (
       <View style={styles.container}>
-        <View style={styles.entradas}>
-          <TextInput placeholder="Peso" keyboardType="numeric" style={styles.input} onChangeText={(massa)=>{this.setState({massa})}}/>
-          <TextInput placeholder="Altura" keyboardType="numeric" style={styles.input} onChangeText={(altura)=>{this.setState({altura})}}/>
+        <View style={styles.inputs}>
+          <TextInput style={styles.input} placeholder="Massa"  keyboardType="numeric" onChangeText={this.alterarMassa} />
+          <TextInput style={styles.input} placeholder="Altura" keyboardType="numeric" onChangeText={this.alterarAltura} />
         </View>
-        <TouchableOpacity style={styles.button} onPress={this.calcular}>
-          <Text style={styles.buttonText}>
-            Calcular
-          </Text>
-        </TouchableOpacity>
-        <Text style={styles.resultado}>{this.state.resultado.toFixed(2)}</Text>
-        <Text style={[styles.resultado, {fontSize: 30}]}>{this.state.resultadoText}</Text>
+          <TouchableOpacity style={styles.calcularButton} onPress={this.calcular}>
+            <Text style={styles.calcularText}>
+              Calcular
+            </Text>
+          </TouchableOpacity>
+          <Text style={styles.result}>{this.state.resultado}</Text>
+          <Text style={styles.result}>{this.state.descricao}</Text>
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#dafcc8',
+    backgroundColor: '#fff',
   },
-  entradas:{
-    flexDirection: 'row',
+  inputs: {
+    flexDirection: 'row'
   },
-  resultado: {
-    alignSelf: 'center',
-    color: '#bdbdbd',
-    fontSize: 40,
+  calcularButton: {
+    backgroundColor: '#3f51b5',
     padding: 20,
-    marginTop: 20
+  },
+  calcularText: {
+    alignSelf: 'center',
+    fontSize: 25,
+    color: 'white',
   },
   input: {
-    height: 50,
-    textAlign: "center",
-    width: "50%",
-    fontSize: 30,
+    height: 80,
+    width: '50%',
+    textAlign: 'center',
+    fontSize: 50,
     marginTop: 24,
   },
-  button: {
-    backgroundColor: '#bcfd99',
-    borderRadius: 20,
-    marginTop: 20,
-    borderColor: 'green'
-  },
-  buttonText: {
+  result: {
     alignSelf: 'center',
-    padding: 25,
-    fontSize: 20,
-    color: '#929292',
-    fontWeight: 'bold'
-
+    color: 'lightgray',
+    fontSize: 50,
+    padding: 15,
   }
 });
