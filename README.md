@@ -26,9 +26,9 @@ Projeto beeem simples para aprender React Native 🐱‍🏍
 <p>Entre na pasta do seu projeto e digite:</p>
 <p><b>- expo start</b></p>
 
-<p> Você será direcionado para um página do expo, lá clique em <i>Run in web browser</i> 😁</p>
+<p> Você será direcionado para um página do expo, lá clique em <i>Run in web browser</i> e aguarde o projeto rodar 😁</p>
 <p>
-  <img  width="20%" src="https://github.com/femelo22/Imc-Calculator-React/blob/master/assets/expoPage.png" />
+  <img  width="40%" height:"50%" src="https://github.com/femelo22/Imc-Calculator-React/blob/master/assets/expoPage.png" />
 </p>
 
 
